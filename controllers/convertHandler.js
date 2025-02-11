@@ -55,7 +55,11 @@ function ConvertHandler() {
       mi: 1.60934, km: 1 / 1.60934
     };
     
-    return conversionRates[initUnit] ? initNum * conversionRates[initUnit] : null;
+    let result = conversionRates[initUnit] ? initNum * conversionRates[initUnit] : null;
+    if (result !== null) {
+      result = Math.round(result * 100000) / 100000;
+    }
+    return result;
   };
 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
